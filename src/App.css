@@ -4,7 +4,11 @@
   padding: 2rem;
   text-align: center;
 }
-
+.matrixLayout{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 .logo {
   height: 6em;
   padding: 1.5em;
