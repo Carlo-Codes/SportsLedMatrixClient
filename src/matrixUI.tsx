@@ -5,7 +5,7 @@ const serverAddress = '192.168.1.250:3000'
 const HTTPserverURL = 'http://' + serverAddress
 const wsServerURL = 'ws://' + serverAddress
 
-function MatrixUi(props:{route:string}) {
+function MatrixUi(props:{route:string, name:string}) {
 
   const [textToSend, setTextToSend] = useState('')
   const [clientSentText, setClientSentText] = useState('')
@@ -30,8 +30,6 @@ function MatrixUi(props:{route:string}) {
   }
   
 
-
-
   useEffect(() => {
     const socket = new WebSocket(wsServerURL + props.route)
     socket.addEventListener('message', function (e){
@@ -44,10 +42,11 @@ function MatrixUi(props:{route:string}) {
 
   return(
     <div id ='mainUI' className="mainUI">
-    <div id='Title' className="Title">LED Matrix Client</div>
+    <div id='Title' className="Title">{props.name}</div>
     <div id="rawTextInputDiv" className="textInput">
       <label htmlFor="rawTextInput">Text to show</label>
-      <input id="rawTextInput"  className='rawTextinput' onChange={handleTextChange}></input></div>
+      <input id="rawTextInput"  className='rawTextinput' onChange={handleTextChange}></input>
+    </div>
       <button id="sendButton" onClick={SendText}> Send</button>
       <button id="footballButton" onClick={sendFootball}>Football</button>
       <div className="matrixDisplay">
